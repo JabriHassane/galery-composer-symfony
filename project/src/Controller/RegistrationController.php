@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
+use App\Service\PasswordGenerator;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,15 +30,18 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasherInterface): Response
     {
         $user = new User();
+        $pass = new PasswordGenerator();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $password = $pass->generateRandomStrongPassword(10);
+            $user->setBlocked(false);
             // encode the plain password
             $user->setPassword(
             $userPasswordHasherInterface->hashPassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $password
                 )
             );
 
@@ -52,6 +56,7 @@ class RegistrationController extends AbstractController
                     ->to($user->getEmail())
                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
+                    ->context(['mdp'=> $password])
             );
             // do anything else you need here, like send an email
 
