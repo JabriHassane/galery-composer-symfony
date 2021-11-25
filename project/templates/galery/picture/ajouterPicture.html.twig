@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Ajouter une photo {% endblock %}
+
+{% block body %}
+    {{ form_start(form, {'attr': {'class': 'row'}}) }}
+    <div class="input-field col s12 m12 l12">
+        {{ form_widget(form.picture) }}
+    </div>
+
+    <div class="input-field col s12 m6 l6">
+        {{ form_widget(form.name) }}
+    </div>
+    <div class="input-field col s12 m6 l6">
+        {{ form_widget(form.numOrder) }}
+    </div>
+
+
+
+    <div class="input-field col s12 m12 l12">
+        <input type="submit" name="" value="Enregistrer" class="btn btn-primary">
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
