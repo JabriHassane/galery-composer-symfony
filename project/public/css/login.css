@@ -1,0 +1,8 @@
+.auth-page-sidebar {
+    padding: 0;
+    background-image: url(../images/gallery.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    position: relative;
+}

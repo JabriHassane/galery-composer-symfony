@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+ 
+
+    {% block stylesheets %}
+             <link href="{{asset('css/gallery.css')}}" rel="stylesheet">
+              <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
+                  <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet">
+
+        {% endblock %}
+
+{% block title %}Gallery!{% endblock %}
+
+{% block body %}
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AjoutePhoto">
+        <i class="fas fa-plus-circle"></i>
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="AjoutePhoto" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="AjoutePhoto" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Ajouter Photo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Enregistrer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="tz-gallery">
+    
+            <div class="row">
+                {% for img in images %}
+        
+         <div class="col-sm-12 col-md-4">
+             <h1>{{ img.size }}</h1>
+                    <a class="lightbox" href="{{img.image}}">
+                        <img src="{{img.image}}" alt="image">
+                    </a>
+                </div>
+    {% endfor %}
+                {# <div class="col-sm-12 col-md-4">
+                    <a class="lightbox" href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg">
+                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/bridge.jpg" alt="Bridge">
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <a class="lightbox" href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/park.jpg">
+                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/park.jpg" alt="Park">
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <a class="lightbox" href="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg">
+                        <img src="https://raw.githubusercontent.com/LeshikJanz/libraries/master/Related%20images/Bootstrap%20example/tunnel.jpg" alt="Tunnel">
+                    </a>
+                </div>
+               #}
+         
+    
+            </div>
+    
+        </div>
+    
+    </div>
+    
+      {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+            <script>
+             baguetteBox.run('.tz-gallery');
+
+            </script>
+        {% endblock %}
+
+
+
+
+{% endblock %}

@@ -7,17 +7,92 @@
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.age) }}
+    <div class="account-pages my-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-10">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="row g-0">
+                                <div class="col-lg-6 p-4">
+                                    
+                                        {{ form_start(registrationForm) }}
+                                    <h6 class="h5 mb-0 mt-3">Bonjour!</h6>
+                                    <p class="text-muted mt-1 mb-4">
+                                        Enter votre email et mot de passe pour acceder a votre admin panel.
+                                    </p>
 
-        {#{{ form_row(registrationForm.plainPassword, {label: 'Password'}) }}#}
 
-        {{ form_row(registrationForm.agreeTerms) }}
+                                    <div class="mb-3">
+                                     
+                                        <div class="input-group">
+                                                    
+                                                       {{ form_row(registrationForm.email) }}
+                                        </div>
+                                    </div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+                                     <div class="mb-3">
+                                     
+                                        <div class="input-group">
+                                                    
+                                                         {{ form_row(registrationForm.pseudo) }}
+                                        </div>
+                                    </div>
+
+                                     <div class="mb-3">
+                                     
+                                        <div class="input-group">
+                                                    
+                                                      {{ form_row(registrationForm.age) }}
+                                        </div>
+                                    </div>
+
+ <label>Enter Captcha:</label>
+      <div class="form-row">
+
+        <div class="form-group col-md-6">       
+      <div class="g-recaptcha" name="g-recaptcha" data-sitekey="6Lf4K6gdAAAAAF-aD1_OnzAibUQA3OL-TjZAkNEQ"></div>
+        </div>
+      </div>
+
+                                    <div class="mb-3 text-center d-grid">
+                                     
+
+                                        <button class="btn btn-warning"  type="submit">Sign Up</button>
+                                     
+                                    </div>
+
+
+
+
+                                </div>
+                                <div class="col-lg-6 d-none d-md-inline-block">
+                                    <div class="auth-page-sidebar">
+                                        <div class="overlay"></div>
+                                        <div class="auth-user-testimonial">
+                                         
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> <!-- end card-body -->
+                    </div>
+                    <!-- end card -->
+
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <p class="text-muted">vous avez deja un compte? <a href="{{ url('login') }}" class="text-warning fw-bold ms-1">Login</a></p>
+                        </div> <!-- end col -->
+                    </div>
+                    <!-- end row -->
+
+                </div> <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+{{ form_end(registrationForm) }}
 {% endblock %}
